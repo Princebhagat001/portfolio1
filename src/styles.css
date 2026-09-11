@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+.nav-link {
+  @apply text-sm font-medium opacity-70 transition hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+}
+.eyebrow {
+  @apply text-xs font-bold uppercase tracking-[.18em] text-primary;
+}
+.hero-shell {
+  background: linear-gradient(115deg, hsl(var(--b1)) 52%, hsl(var(--s)) 52%);
+}
+.hero-image {
+  @apply h-[390px] w-full object-cover md:h-[540px];
+}
+.section-wrap {
+  @apply mx-auto max-w-7xl px-5 py-20 md:py-28 lg:px-8;
+}
+.section-title {
+  @apply font-display text-4xl leading-[1.1] tracking-tight md:text-5xl;
+}
+.copy {
+  @apply max-w-2xl leading-8 opacity-75;
+}
+.meta-label {
+  @apply text-xs font-bold uppercase tracking-wider opacity-55;
+}
+.service-card {
+  @apply bg-base-100 px-7 py-8 md:px-10 md:py-10;
+}
+.service-card span {
+  @apply text-xs font-bold text-primary;
+}
+.service-card h3 {
+  @apply mt-12 font-display text-2xl;
+}
+.service-card p {
+  @apply mt-3 max-w-sm text-sm leading-6 opacity-70;
+}
+.fleet-grid {
+  @apply grid gap-3 md:grid-cols-2;
+}
+.fleet-grid img {
+  @apply h-64 w-full object-cover md:h-72;
+}
+.fleet-grid .fleet-main {
+  @apply md:col-span-2 md:h-[460px];
+}
+.contact-panel {
+  @apply grid gap-10 bg-base-200 px-7 py-10 md:px-12 md:py-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center;
+}
+.contact-tile {
+  @apply flex min-h-24 items-center gap-4 border border-base-300 bg-base-100 px-4 py-3 text-base-content transition hover:border-primary hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+}
+.contact-tile small {
+  @apply block text-xs opacity-65;
+}
+.contact-tile b {
+  @apply mt-1 block text-sm font-medium;
+}
+.whatsapp-tile .hover-label {
+  display: none;
+}
+.whatsapp-tile:hover .normal-label {
+  display: none;
+}
+.whatsapp-tile:hover .hover-label {
+  display: block;
+  color: hsl(var(--p));
+  opacity: 1;
+}
+.whatsapp-label {
+  display: none;
+}
+a:hover .contact-label {
+  display: none;
+}
+a:hover .whatsapp-label {
+  display: inline;
+}
+.footer-link {
+  @apply mt-3 block text-sm opacity-65 transition hover:opacity-100;
+}
+@media (max-width: 1023px) {
+  .hero-shell {
+    background: hsl(var(--b1));
+  }
+}
