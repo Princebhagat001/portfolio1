@@ -1,9 +1,7 @@
 import { imagePath, phone, whatsAppUrl } from "../data/site";
 import Icon from "./Icon";
 
-// The Hero component is the large banner area at the very top of the website
 export default function Hero() {
-  // A simple array holding the statistics displayed on the banner
   const stats = [
     ["10+", "years in the field"],
     ["50+", "vehicles"],
@@ -13,7 +11,6 @@ export default function Hero() {
   return (
     <section id="home" className="hero-shell">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:py-24 lg:grid-cols-[.94fr_1.06fr] lg:items-center lg:px-8">
-        {/* Left Side: Text and Buttons */}
         <div>
           <p className="eyebrow">Vehicle hiring services · Nepal</p>
           <h1 className="mt-5 max-w-xl font-display text-5xl leading-[.98] tracking-tight md:text-7xl">
@@ -29,7 +26,7 @@ export default function Hero() {
               href={whatsAppUrl}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-primary rounded-sm px-5"
+              className="btn btn-primary rounded-full px-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg"
             >
               <span className="contact-label">Contact us</span>
               <span className="whatsapp-label">Chat on WhatsApp</span>
@@ -37,7 +34,7 @@ export default function Hero() {
             </a>
             <a
               href={"tel:" + phone}
-              className="btn btn-outline rounded-sm px-5"
+              className="btn btn-outline rounded-full px-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg"
             >
               <Icon name="phone" size={16} /> Call 9804732000
             </a>

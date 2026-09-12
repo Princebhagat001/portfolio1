@@ -21,14 +21,17 @@ export default function Fleet() {
           className="fleet-main"
           src={imagePath + "vehicle_image2.jpg"}
           alt="Two Bhagat Tour and Travels vehicles"
+          loading="lazy"
         />
         <img
           src={imagePath + "vehicle_image3.jpg"}
           alt="Bhagat Tour and Travels vehicle at night"
+          loading="lazy"
         />
         <img
           src={imagePath + "vehicle_image8.jpg"}
           alt="Bhagat Tour and Travels vehicle on a hill road"
+          loading="lazy"
         />
       </div>
       <div className="mt-8 text-center">
@@ -36,7 +39,7 @@ export default function Fleet() {
           href={whatsAppUrl}
           target="_blank"
           rel="noreferrer"
-          className="btn btn-outline rounded-sm"
+          className="btn btn-outline rounded-full px-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg"
         >
           Ask about vehicle availability <Icon name="arrow" size={16} />
         </a>

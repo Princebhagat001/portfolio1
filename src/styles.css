@@ -21,7 +21,7 @@ body {
   background: linear-gradient(115deg, hsl(var(--b1)) 52%, hsl(var(--s)) 52%);
 }
 .hero-image {
-  @apply h-[390px] w-full object-cover md:h-[540px];
+  @apply h-[390px] w-full object-cover md:h-[540px] rounded-2xl shadow-xl transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl active:scale-[1.01] active:shadow-2xl cursor-pointer;
 }
 .section-wrap {
   @apply mx-auto max-w-7xl px-5 py-20 md:py-28 lg:px-8;
@@ -36,7 +36,7 @@ body {
   @apply text-xs font-bold uppercase tracking-wider opacity-55;
 }
 .service-card {
-  @apply bg-base-100 px-7 py-8 md:px-10 md:py-10;
+  @apply bg-base-100 px-7 py-8 md:px-10 md:py-10 rounded-2xl border border-transparent transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/40 active:-translate-y-2 active:shadow-xl active:border-primary/40 cursor-pointer;
 }
 .service-card span {
   @apply text-xs font-bold text-primary;
@@ -51,16 +51,16 @@ body {
   @apply grid gap-3 md:grid-cols-2;
 }
 .fleet-grid img {
-  @apply h-64 w-full object-cover md:h-72;
+  @apply h-64 w-full object-cover md:h-72 rounded-2xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:z-10 active:scale-[1.02] active:shadow-2xl active:z-10 relative cursor-pointer;
 }
 .fleet-grid .fleet-main {
   @apply md:col-span-2 md:h-[460px];
 }
 .contact-panel {
-  @apply grid gap-10 bg-base-200 px-7 py-10 md:px-12 md:py-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center;
+  @apply grid gap-10 bg-base-200 px-7 py-10 md:px-12 md:py-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center rounded-3xl shadow-sm;
 }
 .contact-tile {
-  @apply flex min-h-24 items-center gap-4 border border-base-300 bg-base-100 px-4 py-3 text-base-content transition hover:border-primary hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+  @apply flex min-h-24 items-center gap-4 border border-base-300 bg-base-100 px-4 py-3 text-base-content transition-all duration-300 rounded-xl hover:-translate-y-1 hover:shadow-lg hover:border-primary hover:bg-base-200 active:-translate-y-1 active:shadow-lg active:border-primary active:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
 }
 .contact-tile small {
   @apply block text-xs opacity-65;
@@ -95,4 +95,18 @@ a:hover .whatsapp-label {
   .hero-shell {
     background: hsl(var(--b1));
   }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-zoom-in {
+  animation: zoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

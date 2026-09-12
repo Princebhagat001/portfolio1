@@ -15,7 +15,7 @@ export default function Services() {
             Discuss your requirement <span aria-hidden="true">→</span>
           </a>
         </div>
-        <div className="mt-12 grid gap-px overflow-hidden border border-base-300 bg-base-300 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {services.map(([title, description], index) => (
             <article className="service-card" key={title}>
               <span>{String(index + 1).padStart(2, "0")}</span>

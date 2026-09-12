@@ -1,19 +1,17 @@
 import { imagePath } from "../data/site";
 
-// The About component displaying the company owner and details
 export default function About() {
   return (
-    // Section wrapper with an ID so the Navbar can scroll down to it (e.g. href="#about")
     <section id="about" className="section-wrap">
-      {/* CSS Grid to split the screen into two columns on large screens */}
       <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-        <div className="relative">
+        <div className="relative rounded-2xl overflow-hidden shadow-lg group">
           <img
-            className="h-[440px] w-full object-cover"
+            className="h-[440px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
             src={imagePath + "owner_image.jpg"}
             alt="Jeetendra Bhagat, owner of Bhagat Tour and Travels"
+            loading="lazy"
           />
-          <div className="absolute bottom-0 left-0 bg-secondary px-5 py-4 text-secondary-content">
+          <div className="absolute bottom-0 left-0 bg-secondary/95 backdrop-blur px-6 py-4 text-secondary-content rounded-tr-2xl">
             <b className="block">Jeetendra Bhagat</b>
             <span className="text-sm opacity-80">
               Owner · 15 years in the field

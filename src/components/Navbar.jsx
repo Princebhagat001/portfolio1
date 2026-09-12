@@ -27,7 +27,7 @@ export default function Navbar({ theme, setTheme }) {
           ))}
           <ThemeToggle theme={theme} setTheme={setTheme} />
           <a
-            className="btn btn-primary btn-sm rounded-sm px-4"
+            className="btn btn-primary btn-sm rounded-full px-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg"
             href={whatsAppUrl}
             target="_blank"
             rel="noreferrer"
@@ -59,7 +59,7 @@ export default function Navbar({ theme, setTheme }) {
             </a>
           ))}
           <a
-            className="btn btn-primary mt-4 w-full rounded-sm"
+            className="btn btn-primary mt-4 w-full rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg"
             href={whatsAppUrl}
             target="_blank"
             rel="noreferrer"

@@ -7,6 +7,7 @@ export const navigation = [
   ["About", "about"],
   ["Services", "services"],
   ["Fleet", "fleet"],
+  ["Recommendations", "recommendations"],
   ["Contact", "contact"],
 ];
 export const services = [

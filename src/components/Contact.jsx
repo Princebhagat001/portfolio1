@@ -1,12 +1,10 @@
 import { email, phone, whatsAppUrl } from "../data/site";
 import Icon from "./Icon";
 
-// Contact component displaying contact options (Phone, Email, Map, WhatsApp)
 export default function Contact() {
   return (
     <section id="contact" className="section-wrap">
       <div className="contact-panel">
-        {/* Left Side: Contact Information Text */}
         <div>
           <p className="eyebrow text-primary">Start a conversation</p>
           <h2 className="mt-4 font-display text-4xl leading-tight text-base-content md:text-5xl">

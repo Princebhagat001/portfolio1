@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Georgia", "serif"],
-        body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Josefin Sans"', "sans-serif"],
+        body: ['"Open Sans"', "sans-serif"],
       },
     },
   },
