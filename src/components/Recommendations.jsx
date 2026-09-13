@@ -50,24 +50,24 @@ export default function Recommendations() {
 
       {/* Lightbox / Modal */}
       {selectedImage && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 backdrop-blur-[2px] p-4 animate-zoom-in"
           onClick={() => setSelectedImage(null)}
         >
-          <div 
+          <div
             className="relative max-h-[90vh] max-w-full md:max-w-[800px] w-auto bg-base-100 p-2 md:p-3 rounded-2xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               className="btn btn-circle btn-sm btn-neutral absolute -right-3 -top-3 shadow-md border-2 border-base-100"
               onClick={() => setSelectedImage(null)}
               aria-label="Close"
             >
               ✕
             </button>
-            <img 
-              src={selectedImage.src} 
-              alt={selectedImage.alt} 
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
               className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-xl"
             />
           </div>

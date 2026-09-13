@@ -16,6 +16,14 @@ export default function App() {
     document.documentElement.dataset.theme = theme; 
     localStorage.setItem('bhagat-theme', theme);
   }, [theme]); 
+
+  // Force scroll to top when the website is refreshed
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
   
   return (
     <div className="min-h-screen font-body">

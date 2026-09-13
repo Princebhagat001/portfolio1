@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { navigation, whatsAppUrl } from "../data/site";
 import Brand from "./Brand";
 import Icon from "./Icon";
@@ -15,8 +15,42 @@ function ThemeToggle({ theme, setTheme }) {
 }
 export default function Navbar({ theme, setTheme }) {
   const [open, setOpen] = useState(false);
+  const navRef = useRef(null);
+
+  // Close mobile menu when clicking outside of the navbar or when scrolling significantly
+  useEffect(() => {
+    let initialScrollY = window.scrollY;
+
+    function handleClickOutside(event) {
+      if (open && navRef.current && !navRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    function handleScroll() {
+      if (open) {
+        // Only close if they scroll more than 15px from where they opened it
+        // This prevents the menu from instantly closing due to tiny layout shifts
+        if (Math.abs(window.scrollY - initialScrollY) > 15) {
+          setOpen(false);
+        }
+      }
+    }
+
+    if (open) {
+      initialScrollY = window.scrollY;
+      document.addEventListener("mousedown", handleClickOutside);
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-base-300/70 bg-base-100/95 text-base-content backdrop-blur">
+    <header ref={navRef} className="sticky top-0 z-50 border-b border-base-300/70 bg-base-100/95 text-base-content backdrop-blur">
       <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8">
         <Brand />
         <div className="hidden items-center gap-7 lg:flex">
