@@ -9,13 +9,13 @@ import Stats from './components/Stats'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
-export default function App() { 
-  const [theme, setTheme] = useState(() => localStorage.getItem('bhagat-theme') || 'bhagat'); 
-  
-  useEffect(() => { 
-    document.documentElement.dataset.theme = theme; 
+export default function App() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('bhagat-theme') || 'bhagat');
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
     localStorage.setItem('bhagat-theme', theme);
-  }, [theme]); 
+  }, [theme]);
 
   // Force scroll to top when the website is refreshed
   useEffect(() => {
@@ -24,20 +24,20 @@ export default function App() {
     }
     window.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <div className="min-h-screen font-body">
-      <Navbar theme={theme} setTheme={setTheme}/>
+      <Navbar theme={theme} setTheme={setTheme} />
       <main>
-        <Hero/>
-        <About/>
-        <Services/>
-        <Fleet/>
-        <Recommendations/>
-        <Stats/>
-        <Contact/>
+        <Hero />
+        <About />
+        <Services />
+        <Fleet />
+        <Recommendations />
+        <Stats />
+        <Contact />
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
