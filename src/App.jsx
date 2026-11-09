@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -12,13 +12,7 @@ import { isValidRoute } from './utilis/routeValidation'
 import { applyOpenGraph, notFoundOpenGraph } from './utilis/opengraph'
 
 export default function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('bhagat-theme') || 'bhagat');
   const validRoute = isValidRoute(window.location.pathname, window.location.hash);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem('bhagat-theme', theme);
-  }, [theme]);
 
   // Force scroll to top when the website is refreshed
   useEffect(() => {
@@ -39,7 +33,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-body">
-      <Navbar theme={theme} setTheme={setTheme} />
+      <Navbar />
       <main>
         <Hero />
         <About />

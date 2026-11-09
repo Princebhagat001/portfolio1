@@ -21,13 +21,12 @@ export default function Services() {
           </div>
         </div>
         <div ref={cardsRef} className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {services.map(([title, description], index) => (
+          {services.map(([title, description]) => (
             <article
               className={`service-card rounded-2xl border border-base-300 shadow-sm ${motion.card}`}
               key={title}
               data-motion-item
             >
-              <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{title}</h3>
               <p>{description}</p>
             </article>

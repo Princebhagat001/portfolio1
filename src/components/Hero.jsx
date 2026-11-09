@@ -61,7 +61,7 @@ export default function Hero() {
             fetchPriority="high"
             decoding="async"
           />
-          <div className="absolute -bottom-5 left-5 flex items-center gap-3 border border-base-300 bg-base-100 px-4 py-3 shadow-sm">
+          <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-xl border border-base-300 bg-base-100 px-4 py-3 shadow-sm">
             <span className="text-primary">
               <Icon name="clock" />
             </span>

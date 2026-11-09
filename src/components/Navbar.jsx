@@ -3,18 +3,7 @@ import { navigation, whatsAppUrl } from "../data/site";
 import Brand from "./Brand";
 import Icon from "./Icon";
 import { motion } from "../utilis/motion";
-function ThemeToggle({ theme, setTheme }) {
-  return (
-    <button
-      className="btn btn-ghost btn-circle btn-sm"
-      onClick={() => setTheme(theme === "bhagat" ? "night" : "bhagat")}
-      aria-label="Switch color theme"
-    >
-      <Icon name={theme === "bhagat" ? "moon" : "sun"} />
-    </button>
-  );
-}
-export default function Navbar({ theme, setTheme }) {
+export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navRef = useRef(null);
 
@@ -60,7 +49,6 @@ export default function Navbar({ theme, setTheme }) {
               {label}
             </a>
           ))}
-          <ThemeToggle theme={theme} setTheme={setTheme} />
           <a
             className={`btn btn-primary btn-sm rounded-full px-5 ${motion.button}`}
             href={whatsAppUrl}
@@ -71,7 +59,6 @@ export default function Navbar({ theme, setTheme }) {
           </a>
         </div>
         <div className="flex items-center gap-1 lg:hidden">
-          <ThemeToggle theme={theme} setTheme={setTheme} />
           <button
             className="btn btn-ghost btn-circle btn-sm"
             onClick={() => setOpen(!open)}
