@@ -1,8 +1,10 @@
 import { imagePath, whatsAppUrl } from "../data/site";
 import Icon from "./Icon";
+import { motion, useReveal } from "../utilis/motion";
 export default function Fleet() {
+  const revealRef = useReveal();
   return (
-    <section id="fleet" className="section-wrap">
+    <section ref={revealRef} id="fleet" className="section-wrap">
       <div className="grid gap-10 lg:grid-cols-[1fr_.7fr]">
         <div>
           <p className="eyebrow">Our fleet</p>
@@ -11,25 +13,25 @@ export default function Fleet() {
           </h2>
         </div>
         <p className="copy self-end">
-          We offer a fleet of 50+ vehicles and provide service throughout Nepal.
-          Contact us to discuss the right vehicle and current rate for your
-          journey.
+          We arrange vehicle hire with a driver in Koshi, Madhesh, and Bagmati
+          provinces. Contact us to discuss a suitable vehicle and the current
+          rate for your journey.
         </p>
       </div>
       <div className="fleet-grid mt-10">
         <img
           className="fleet-main"
-          src={imagePath + "vehicle_image2.jpg"}
+          src={imagePath + "vehicle_image2-optimized.jpg"}
           alt="Two Bhagat Tour and Travels vehicles"
           loading="lazy"
         />
         <img
-          src={imagePath + "vehicle_image3.jpg"}
+          src={imagePath + "vehicle_image3-optimized.jpg"}
           alt="Bhagat Tour and Travels vehicle at night"
           loading="lazy"
         />
         <img
-          src={imagePath + "vehicle_image8.jpg"}
+          src={imagePath + "vehicle_image8-optimized.jpg"}
           alt="Bhagat Tour and Travels vehicle on a hill road"
           loading="lazy"
         />
@@ -39,7 +41,7 @@ export default function Fleet() {
           href={whatsAppUrl}
           target="_blank"
           rel="noreferrer"
-          className="btn btn-outline rounded-full px-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg"
+          className={`btn btn-outline rounded-full px-8 ${motion.button}`}
         >
           Ask about vehicle availability <Icon name="arrow" size={16} />
         </a>

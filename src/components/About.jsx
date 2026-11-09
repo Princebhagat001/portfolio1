@@ -1,20 +1,22 @@
 import { imagePath } from "../data/site";
+import { motion, useReveal } from "../utilis/motion";
 
 export default function About() {
+  const revealRef = useReveal();
   return (
-    <section id="about" className="section-wrap">
+    <section ref={revealRef} id="about" className="section-wrap">
       <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
         <div className="relative rounded-2xl overflow-hidden shadow-lg group">
           <img
-            className="h-[440px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            src={imagePath + "owner_image.jpg"}
+            className={`h-[440px] w-full object-cover ${motion.image}`}
+            src={imagePath + "owner_image-optimized.jpg"}
             alt="Jeetendra Bhagat, owner of Bhagat Tour and Travels"
             loading="lazy"
           />
           <div className="absolute bottom-0 left-0 bg-secondary/95 backdrop-blur px-6 py-4 text-secondary-content rounded-tr-2xl">
             <b className="block">Jeetendra Bhagat</b>
             <span className="text-sm opacity-80">
-              Owner · 15 years in the field
+              Owner
             </span>
           </div>
         </div>
@@ -29,9 +31,8 @@ export default function About() {
             customers, including travel in remote areas.
           </p>
           <p className="copy mt-4">
-            Our approach is simple: maintain vehicles carefully, provide trained
-            and well-behaved drivers, and arrive 10–15 minutes before the
-            designated time.
+            We aim to keep vehicles in good condition, provide trained drivers,
+            and arrive before the agreed pick-up time.
           </p>
           <dl className="mt-8 grid gap-x-8 gap-y-5 border-t border-base-300 pt-6 sm:grid-cols-2">
             <div>

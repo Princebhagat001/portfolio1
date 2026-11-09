@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { navigation, whatsAppUrl } from "../data/site";
 import Brand from "./Brand";
 import Icon from "./Icon";
+import { motion } from "../utilis/motion";
 function ThemeToggle({ theme, setTheme }) {
   return (
     <button
@@ -55,13 +56,13 @@ export default function Navbar({ theme, setTheme }) {
         <Brand />
         <div className="hidden items-center gap-7 lg:flex">
           {navigation.map(([label, id]) => (
-            <a key={id} className="nav-link" href={"#" + id}>
+            <a key={id} className={`nav-link ${motion.link}`} href={"#" + id}>
               {label}
             </a>
           ))}
           <ThemeToggle theme={theme} setTheme={setTheme} />
           <a
-            className="btn btn-primary btn-sm rounded-full px-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg"
+            className={`btn btn-primary btn-sm rounded-full px-5 ${motion.button}`}
             href={whatsAppUrl}
             target="_blank"
             rel="noreferrer"
@@ -86,14 +87,14 @@ export default function Navbar({ theme, setTheme }) {
             <a
               key={id}
               onClick={() => setOpen(false)}
-              className="block border-b border-base-300 py-3 font-medium"
+              className={`block border-b border-base-300 py-3 font-medium ${motion.link}`}
               href={"#" + id}
             >
               {label}
             </a>
           ))}
           <a
-            className="btn btn-primary mt-4 w-full rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg"
+            className={`btn btn-primary mt-4 w-full rounded-full ${motion.button}`}
             href={whatsAppUrl}
             target="_blank"
             rel="noreferrer"

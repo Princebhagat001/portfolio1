@@ -1,33 +1,28 @@
-import { email, navigation } from "../data/site";
+import { email, navigation, phone } from "../data/site";
 import Brand from "./Brand";
 import Icon from "./Icon";
+import { motion } from "../utilis/motion";
 export default function Footer() {
   return (
     <footer className="border-t border-base-300 bg-base-100 text-base-content">
-      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:px-8">
         <div>
           <Brand />
-          <p className="mt-4 max-w-xs text-sm leading-6 opacity-65">
-            Vehicle hiring services for travel across Nepal.
-          </p>
+          <a className={`footer-link ${motion.link}`} href={"tel:" + phone}>
+            {phone} / 9807755037
+          </a>
+          <a className={`footer-link ${motion.link}`} href={"mailto:" + email}>
+            {email}
+          </a>
+          <span className={`footer-link ${motion.link}`}>Lahan-8, Siraha</span>
         </div>
         <div>
           <b className="text-sm">Navigate</b>
           {navigation.slice(1).map(([label, id]) => (
-            <a className="footer-link" key={id} href={"#" + id}>
+            <a className={`footer-link ${motion.link}`} key={id} href={"#" + id}>
               {label}
             </a>
           ))}
-        </div>
-        <div>
-          <b className="text-sm">Contact</b>
-          <a className="footer-link" href="tel:9804732000">
-            9804732000 / 9807755037
-          </a>
-          <a className="footer-link" href={"mailto:" + email}>
-            {email}
-          </a>
-          <span className="footer-link">Lahan-8, Siraha</span>
         </div>
         <div>
           <b className="text-sm">Follow</b>

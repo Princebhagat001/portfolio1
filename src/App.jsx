@@ -5,12 +5,15 @@ import About from './components/About'
 import Services from './components/Services'
 import Fleet from './components/Fleet'
 import Recommendations from './components/Recommendations'
-import Stats from './components/Stats'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import NotFound from './components/NotFound'
+import { isValidRoute } from './utilis/routeValidation'
+import { applyOpenGraph, notFoundOpenGraph } from './utilis/opengraph'
 
 export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('bhagat-theme') || 'bhagat');
+  const validRoute = isValidRoute(window.location.pathname, window.location.hash);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -25,6 +28,15 @@ export default function App() {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    if (validRoute) return;
+    applyOpenGraph(notFoundOpenGraph(window.location.pathname));
+    document.title = 'Page Not Found | Bhagat Tour and Travels';
+    document.querySelector('meta[name="robots"]')?.setAttribute('content', 'noindex, nofollow');
+  }, [validRoute]);
+
+  if (!validRoute) return <NotFound />;
+
   return (
     <div className="min-h-screen font-body">
       <Navbar theme={theme} setTheme={setTheme} />
@@ -34,7 +46,6 @@ export default function App() {
         <Services />
         <Fleet />
         <Recommendations />
-        <Stats />
         <Contact />
       </main>
       <Footer />

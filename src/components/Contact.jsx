@@ -1,9 +1,11 @@
 import { email, phone, whatsAppUrl } from "../data/site";
 import Icon from "./Icon";
+import { motion, useReveal } from "../utilis/motion";
 
 export default function Contact() {
+  const revealRef = useReveal();
   return (
-    <section id="contact" className="section-wrap">
+    <section ref={revealRef} id="contact" className="section-wrap">
       <div className="contact-panel">
         <div>
           <p className="eyebrow text-primary">Start a conversation</p>
@@ -16,14 +18,14 @@ export default function Contact() {
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2">
-          <a className="contact-tile" href={"tel:" + phone}>
+          <a className={`contact-tile ${motion.contact}`} href={"tel:" + phone}>
             <Icon name="phone" />
             <span>
               <small>Call us</small>
               <b>9804732000</b>
             </span>
           </a>
-          <a className="contact-tile" href={"mailto:" + email}>
+          <a className={`contact-tile ${motion.contact}`} href={"mailto:" + email}>
             <Icon name="mail" />
             <span>
               <small>Email</small>
@@ -31,7 +33,7 @@ export default function Contact() {
             </span>
           </a>
           <a
-            className="contact-tile"
+            className={`contact-tile ${motion.contact}`}
             href="https://maps.app.goo.gl/W3RgoCQpAV2Kjr776"
             target="_blank"
             rel="noreferrer"
@@ -43,7 +45,7 @@ export default function Contact() {
             </span>
           </a>
           <a
-            className="contact-tile whatsapp-tile"
+            className={`contact-tile whatsapp-tile ${motion.contact}`}
             href={whatsAppUrl}
             target="_blank"
             rel="noreferrer"

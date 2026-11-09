@@ -1,24 +1,28 @@
 import { useState } from "react";
+import { fadeUp, motion, useReveal } from "../utilis/motion";
 
 const letters = [
   {
     id: 1,
-    src: "/Cert/Bhagat Tours & Travels_page-0001.jpg",
+    src: "/Cert/save-the-children-recommendation-optimized.jpg",
     alt: "Recommendation Letter from Save the Children",
   },
   {
     id: 2,
-    src: "/Cert/WhatsApp Image 2026-08-21 at 8.02.19 PM.jpeg",
+    src: "/Cert/world-vision-recommendation-optimized.jpg",
     alt: "Recommendation Letter from World Vision",
   },
 ];
 
 export default function Recommendations() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const headingRef = useReveal();
+  const galleryRef = useReveal({ stagger: true });
+  const modalRef = useReveal({ variant: fadeUp, enabled: Boolean(selectedImage) });
 
   return (
     <section id="recommendations" className="section-wrap bg-base-200/50 relative">
-      <div className="grid gap-10 lg:grid-cols-[1fr_.7fr]">
+      <div ref={headingRef} className="grid gap-10 lg:grid-cols-[1fr_.7fr]">
         <div>
           <p className="eyebrow">Recommendations</p>
           <h2 className="section-title mt-4">
@@ -31,12 +35,13 @@ export default function Recommendations() {
       </div>
 
       {/* Scrollable Gallery */}
-      <div className="flex gap-6 mt-12 overflow-x-auto pb-8 snap-x snap-mandatory px-4 md:px-0">
+      <div ref={galleryRef} className="flex gap-6 mt-12 overflow-x-auto pb-8 snap-x snap-mandatory px-4 md:px-0">
         {letters.map((letter) => (
           <div
             key={letter.id}
+            data-motion-item
             onClick={() => setSelectedImage(letter)}
-            className="w-72 md:w-80 shrink-0 snap-start bg-base-100 p-4 shadow-lg rounded-2xl border border-base-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/40 active:-translate-y-2 active:shadow-xl active:border-primary/40 cursor-zoom-in"
+            className={`w-72 md:w-80 shrink-0 snap-start bg-base-100 p-4 shadow-lg rounded-2xl border border-base-300 ${motion.card} cursor-zoom-in`}
           >
             <img
               src={letter.src}
@@ -51,7 +56,8 @@ export default function Recommendations() {
       {/* Lightbox / Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 backdrop-blur-[2px] p-4 animate-zoom-in"
+          ref={modalRef}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 backdrop-blur-[2px] p-4"
           onClick={() => setSelectedImage(null)}
         >
           <div

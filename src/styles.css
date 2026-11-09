@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
 }
@@ -15,7 +11,7 @@ body {
 }
 
 .nav-link {
-  @apply text-sm font-medium opacity-70 transition hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+  @apply text-sm font-medium opacity-70 hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
 }
 
 .eyebrow {
@@ -79,7 +75,7 @@ body {
 }
 
 .contact-tile {
-  @apply flex min-h-24 items-center gap-4 border border-base-300 bg-base-100 px-4 py-3 text-base-content transition hover:border-primary hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+  @apply flex min-h-24 items-center gap-4 border border-base-300 bg-base-100 px-4 py-3 text-base-content hover:border-primary hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
 }
 
 .contact-tile small {
@@ -117,7 +113,7 @@ a:hover .whatsapp-label {
 }
 
 .footer-link {
-  @apply mt-3 block text-sm opacity-65 transition hover:opacity-100;
+  @apply mt-3 block text-sm opacity-65 hover:opacity-100;
 }
 
 @media (max-width: 1023px) {
