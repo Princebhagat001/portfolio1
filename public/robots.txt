@@ -3,4 +3,4 @@ Allow: /
 Allow: /api/og
 Disallow: /api/
 
-Sitemap: https://princebhagat.com.np/sitemap.xml
+Sitemap: https://bhagattourandtravels.com.np/sitemap.xml
