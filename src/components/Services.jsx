@@ -9,7 +9,7 @@ export default function Services() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches) return;
+    if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const loadVideo = () => {
       video.src = "/videos/bg-video.mp4";

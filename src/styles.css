@@ -169,10 +169,6 @@ body {
 }
 
 @media (max-width: 767px) {
-  .services-video {
-    display: none;
-  }
-
   .services-overlay {
     background: rgb(10 35 54 / 40%);
   }
