@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -14,8 +14,36 @@ import NotFound from './components/NotFound'
 import { isValidRoute } from './utilis/routeValidation'
 import { applyOpenGraph, notFoundOpenGraph } from './utilis/opengraph'
 
+const homeTitle = 'Bhagat Tour and Travels | Car Rental & Travel Agency in Lahan, Siraha';
+const homeDescription = 'Looking for car rental in Lahan, Siraha? Bhagat Tour and Travels is a travel agency offering driver-based vehicle hire across Koshi, Madhesh, and Bagmati. Call 9804732000.';
+const homeOpenGraph = {
+  'og:type': 'website',
+  'og:url': 'https://bhagattourandtravels.com.np/',
+  'og:title': homeTitle,
+  'og:description': homeDescription,
+  'og:image': 'https://bhagattourandtravels.com.np/images/vehicle_image1-optimized.jpg',
+  'og:image:alt': 'Bhagat Tour and Travels vehicle on a road in Nepal',
+};
+
 export default function App() {
-  const validRoute = isValidRoute(window.location.pathname, window.location.hash);
+  const [location, setLocation] = useState(() => ({
+    pathname: window.location.pathname,
+    hash: window.location.hash,
+  }));
+  const validRoute = isValidRoute(location.pathname, location.hash);
+
+  useEffect(() => {
+    const updateLocation = () => setLocation({
+      pathname: window.location.pathname,
+      hash: window.location.hash,
+    });
+    window.addEventListener('hashchange', updateLocation);
+    window.addEventListener('popstate', updateLocation);
+    return () => {
+      window.removeEventListener('hashchange', updateLocation);
+      window.removeEventListener('popstate', updateLocation);
+    };
+  }, []);
 
   // Force scroll to top when the website is refreshed
   useEffect(() => {
@@ -26,11 +54,29 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (validRoute) return;
-    applyOpenGraph(notFoundOpenGraph(window.location.pathname));
+    const description = document.querySelector('meta[name="description"]');
+    const robots = document.querySelector('meta[name="robots"]');
+
+    if (validRoute) {
+      document.title = homeTitle;
+      description?.setAttribute('content', homeDescription);
+      robots?.setAttribute('content', 'index, follow');
+      applyOpenGraph(homeOpenGraph);
+      if (!document.querySelector('link[rel="canonical"]')) {
+        const canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        canonical.href = homeOpenGraph['og:url'];
+        document.head.append(canonical);
+      }
+      return;
+    }
+
+    applyOpenGraph(notFoundOpenGraph(location.pathname + location.hash));
     document.title = 'Page Not Found | Bhagat Tour and Travels';
-    document.querySelector('meta[name="robots"]')?.setAttribute('content', 'noindex, nofollow');
-  }, [validRoute]);
+    description?.setAttribute('content', 'This page could not be found on the Bhagat Tour and Travels website.');
+    document.querySelector('link[rel="canonical"]')?.remove();
+    robots?.setAttribute('content', 'noindex, nofollow');
+  }, [validRoute, location.pathname, location.hash]);
 
   if (!validRoute) return <NotFound />;
 

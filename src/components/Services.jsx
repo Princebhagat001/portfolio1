@@ -1,26 +1,51 @@
 import { services } from "../data/site";
 import { motion, useReveal } from "../utilis/motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 export default function Services() {
   const revealRef = useReveal();
   const cardsRef = useReveal({ stagger: true });
+  const videoRef = useRef(null);
   const [openService, setOpenService] = useState(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches) return;
+
+    const loadVideo = () => {
+      video.src = "/videos/bg-video.mp4";
+      video.load();
+      video.play().catch(() => {});
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      loadVideo();
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      loadVideo();
+      observer.disconnect();
+    }, { rootMargin: "200px" });
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="services" className="services-section relative isolate overflow-hidden">
       <video
+        ref={videoRef}
         className="services-video"
-        autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         onLoadedMetadata={(event) => {
           event.currentTarget.playbackRate = 0.81;
         }}
         aria-hidden="true"
         tabIndex={-1}
       >
-        <source src="/videos/bg-video.mp4" type="video/mp4" />
       </video>
       <div className="services-overlay" aria-hidden="true" />
       <div className="section-wrap">

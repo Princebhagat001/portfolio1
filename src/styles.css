@@ -169,6 +169,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .services-video {
+    display: none;
+  }
+
   .services-overlay {
     background: rgb(10 35 54 / 40%);
   }
@@ -232,6 +236,9 @@ body {
 
 .contact-panel {
   @apply grid gap-10 px-7 py-10 md:px-12 md:py-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center;
+  position: relative;
+  border-radius: 1rem;
+  clip-path: inset(0 round 1rem);
 }
 
 .contact-section {
@@ -245,12 +252,6 @@ body {
   inset: 0;
   z-index: 0;
   background: url("/images/vehicle_image2-optimized.jpg") center / cover no-repeat;
-}
-
-.contact-panel {
-  position: relative;
-  border-radius: 1rem;
-  clip-path: inset(0 round 1rem);
 }
 
 .contact-panel::before {
