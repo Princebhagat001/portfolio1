@@ -50,8 +50,82 @@ body {
   @apply mt-0 font-display text-2xl;
 }
 
+.service-toggle {
+  @apply text-left;
+}
+
 .service-card p {
   @apply mt-3 max-w-sm text-sm leading-6 opacity-70;
+}
+
+.services-video,
+.services-overlay {
+  @apply absolute inset-0 -z-10 h-full w-full;
+}
+
+.services-video {
+  @apply object-cover;
+  object-position: center center;
+  filter: blur(3px) saturate(0.8);
+  transform: scale(1.04);
+}
+
+.services-overlay {
+  background: linear-gradient(110deg, rgb(10 35 54 / 47%), rgb(21 67 103 / 37%));
+}
+
+.services-title {
+  @apply text-white text-3xl md:text-4xl;
+}
+
+.services-section .service-card {
+  @apply bg-base-100/95 backdrop-blur-sm;
+}
+
+@media (max-width: 767px) {
+  .services-overlay {
+    background: rgb(10 35 54 / 40%);
+  }
+
+  .services-section .section-wrap {
+    @apply py-14;
+  }
+
+  .services-section .service-card {
+    @apply px-6 py-6;
+  }
+
+  .services-section .service-card h3 {
+    @apply text-xl;
+  }
+
+  .services-section .service-card p {
+    display: none;
+  }
+
+  .services-section .service-card p.is-open {
+    display: block;
+  }
+
+  .services-section .service-toggle {
+    width: 100%;
+  }
+
+  .services-section .service-toggle::after {
+    content: "+";
+    float: right;
+    color: hsl(var(--p));
+  }
+
+  .services-section .service-toggle[aria-expanded="true"]::after {
+    content: "−";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-video {
+    display: none;
+  }
 }
 
 .fleet-grid {

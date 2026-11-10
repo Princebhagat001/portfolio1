@@ -5,6 +5,7 @@ import About from './components/About'
 import Services from './components/Services'
 import Fleet from './components/Fleet'
 import Recommendations from './components/Recommendations'
+import FAQs from './components/FAQs'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import NotFound from './components/NotFound'
@@ -40,6 +41,7 @@ export default function App() {
         <Services />
         <Fleet />
         <Recommendations />
+        <FAQs />
         <Contact />
       </main>
       <Footer />

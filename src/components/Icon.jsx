@@ -16,10 +16,6 @@ const paths = {
   instagram: (
     <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 6.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm5-3.5h.01" />
   ),
-  sun: (
-    <path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z" />
-  ),
-  moon: <path d="M20.4 15.5A8.5 8.5 0 0 1 8.5 3.6 8.5 8.5 0 1 0 20.4 15.5z" />,
 };
 export default function Icon({ name, size = 18 }) {
   return (
