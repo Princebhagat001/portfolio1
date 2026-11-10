@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
+import BookingSteps from './components/BookingSteps'
+import RentalPackages from './components/RentalPackages'
 import Fleet from './components/Fleet'
 import Recommendations from './components/Recommendations'
 import FAQs from './components/FAQs'
@@ -39,6 +41,8 @@ export default function App() {
         <Hero />
         <About />
         <Services />
+        <BookingSteps />
+        <RentalPackages />
         <Fleet />
         <Recommendations />
         <FAQs />

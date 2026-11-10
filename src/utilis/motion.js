@@ -25,7 +25,7 @@ export const motion = {
   image:
     "transition-transform duration-500 motion-reduce:transition-none group-hover:scale-105",
   card:
-    "transition-all duration-300 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0 hover:-translate-y-2 hover:shadow-xl hover:border-primary/40 active:-translate-y-2 active:shadow-xl active:border-primary/40",
+    "transition-all duration-300 motion-reduce:transition-none hover:shadow-xl hover:border-primary/40 active:shadow-xl active:border-primary/40",
   link: "transition-opacity duration-200 motion-reduce:transition-none",
   contact: "transition-colors duration-200 motion-reduce:transition-none",
 };

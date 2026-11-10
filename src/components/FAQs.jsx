@@ -42,31 +42,31 @@ export default function FAQs() {
           </a>
           <h3 className="font-display text-xl font-semibold">Get a quote</h3>
           <form className="mt-3 grid gap-2.5" onSubmit={sendQuote}>
-            <label className="form-field"><span>Name <span aria-hidden="true">*</span></span>
-              <input className="input input-bordered w-full" name="Name" autoComplete="name" required />
+            <label className="form-field"><span>Name <span className="text-error" aria-hidden="true">*</span></span>
+              <input className="input input-bordered w-full" name="Name" placeholder="e.g. Your full name" autoComplete="name" required />
             </label>
-            <label className="form-field"><span>Phone number <span aria-hidden="true">*</span></span>
-              <input className="input input-bordered w-full" name="Phone" type="tel" autoComplete="tel" required />
+            <label className="form-field"><span>Phone number <span className="text-error" aria-hidden="true">*</span></span>
+              <input className="input input-bordered w-full" name="Phone" type="tel" placeholder="e.g. +977-9*********" autoComplete="tel" required />
             </label>
             <label className="form-field">Email
-              <input className="input input-bordered w-full" name="Email" type="email" autoComplete="email" />
+              <input className="input input-bordered w-full" name="Email" type="email" placeholder="e.g. example@gmail.com" autoComplete="email" />
             </label>
             <div className="grid grid-cols-2 gap-3">
-              <label className="form-field"><span>From <span aria-hidden="true">*</span></span>
-                <input className="input input-bordered w-full" name="From" required />
+              <label className="form-field"><span>From <span className="text-error" aria-hidden="true">*</span></span>
+                <input className="input input-bordered w-full" name="From" placeholder="e.g. Lahan" required />
               </label>
-              <label className="form-field"><span>To <span aria-hidden="true">*</span></span>
-                <input className="input input-bordered w-full" name="To" required />
+              <label className="form-field"><span>To <span className="text-error" aria-hidden="true">*</span></span>
+                <input className="input input-bordered w-full" name="To" placeholder="e.g. Janakpur" required />
               </label>
             </div>
             <label className="form-field">Travel date
               <input className="input input-bordered w-full" name="Travel date" type="date" />
             </label>
-            <label className="form-field"><span>Vehicle type <span aria-hidden="true">*</span></span>
+            <label className="form-field"><span>Vehicle type <span className="text-error" aria-hidden="true">*</span></span>
               <input className="input input-bordered w-full" name="Vehicle type" placeholder="e.g. Scorpio 2x2" required />
             </label>
             <label className="form-field">Other requirements
-              <textarea className="textarea textarea-bordered w-full" name="Other requirements" rows="3" />
+              <textarea className="textarea textarea-bordered w-full" name="Other requirements" placeholder="e.g. passengers, luggage, or special requests" rows="3" />
             </label>
             <button className="btn btn-primary h-[2.4rem] min-h-0 w-full" type="submit">Send quote request</button>
             <p className="text-xs opacity-65">Opens a prefilled Gmail draft for you to review and send.</p>
