@@ -1,5 +1,6 @@
 import { imagePath } from "../data/site";
 import { motion, useReveal } from "../utilis/motion";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 
 export default function About() {
   const revealRef = useReveal();
@@ -7,7 +8,7 @@ export default function About() {
     <section ref={revealRef} id="about" className="section-wrap">
       <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
         <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-          <img
+          <ImageWithSkeleton
             className={`h-[440px] w-full object-cover ${motion.image}`}
             src={imagePath + "owner_image-optimized.jpg"}
             alt="Jeetendra Bhagat, owner of Bhagat Tour and Travels"

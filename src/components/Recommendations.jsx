@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { fadeUp, motion, useReveal } from "../utilis/motion";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 
 const letters = [
   {
@@ -43,10 +44,11 @@ export default function Recommendations() {
             onClick={() => setSelectedImage(letter)}
             className={`w-72 md:w-80 shrink-0 snap-start bg-base-100 p-4 shadow-lg rounded-2xl border border-base-300 ${motion.card} cursor-zoom-in`}
           >
-            <img
+            <ImageWithSkeleton
               src={letter.src}
               alt={letter.alt}
               className="w-full h-auto rounded-xl pointer-events-none"
+              wrapperClassName="aspect-[0.707]"
               loading="lazy"
             />
           </div>
@@ -71,10 +73,11 @@ export default function Recommendations() {
             >
               ✕
             </button>
-            <img
+            <ImageWithSkeleton
               src={selectedImage.src}
               alt={selectedImage.alt}
               className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-xl"
+              wrapperClassName="aspect-[0.707] max-h-[85vh]"
             />
           </div>
         </div>

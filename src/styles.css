@@ -26,6 +26,38 @@ body {
   @apply h-[390px] w-full rounded-2xl object-cover md:h-[540px];
 }
 
+.image-loading {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.image-pending {
+  opacity: 0;
+}
+
+.image-loaded {
+  opacity: 1;
+  transition: opacity 180ms ease-out;
+}
+
+.image-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, hsl(var(--b2)) 20%, hsl(var(--b1)) 45%, hsl(var(--b2)) 70%);
+  background-size: 200% 100%;
+  animation: image-skeleton-shimmer 1.2s linear infinite;
+}
+
+@keyframes image-skeleton-shimmer {
+  to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-loaded { transition: none; }
+  .image-skeleton { animation: none; }
+}
+
 .section-wrap {
   @apply mx-auto max-w-7xl px-5 py-20 md:py-28 lg:px-8;
 }
@@ -186,8 +218,12 @@ body {
   @apply grid gap-3 md:grid-cols-2;
 }
 
-.fleet-grid img {
-  @apply h-64 w-full object-cover md:h-72;
+.fleet-grid .image-loading {
+  @apply h-64 w-full md:h-72;
+}
+
+.fleet-grid .image-loading img {
+  @apply h-full w-full object-cover;
 }
 
 .fleet-grid .fleet-main {
@@ -213,7 +249,8 @@ body {
 
 .contact-panel {
   position: relative;
-  clip-path: inset(0);
+  border-radius: 1rem;
+  clip-path: inset(0 round 1rem);
 }
 
 .contact-panel::before {

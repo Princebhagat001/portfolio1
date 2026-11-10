@@ -1,6 +1,7 @@
 import { imagePath, phone, whatsAppUrl } from "../data/site";
 import Icon from "./Icon";
 import { motion } from "../utilis/motion";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 
 export default function Hero() {
   const stats = [
@@ -54,7 +55,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="relative">
-          <img
+          <ImageWithSkeleton
             className="hero-image"
             src={imagePath + "vehicle_image1-optimized.jpg"}
             alt="Bhagat Tour and Travels vehicle on a road in Nepal"

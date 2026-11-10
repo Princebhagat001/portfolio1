@@ -1,6 +1,7 @@
 import { imagePath, whatsAppUrl } from "../data/site";
 import Icon from "./Icon";
 import { motion, useReveal } from "../utilis/motion";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 export default function Fleet() {
   const revealRef = useReveal();
   return (
@@ -19,18 +20,18 @@ export default function Fleet() {
         </p>
       </div>
       <div className="fleet-grid mt-10">
-        <img
-          className="fleet-main"
+        <ImageWithSkeleton
+          wrapperClassName="fleet-main"
           src={imagePath + "vehicle_image2-optimized.jpg"}
           alt="Two Bhagat Tour and Travels vehicles"
           loading="lazy"
         />
-        <img
+        <ImageWithSkeleton
           src={imagePath + "vehicle_image3-optimized.jpg"}
           alt="Bhagat Tour and Travels vehicle at night"
           loading="lazy"
         />
-        <img
+        <ImageWithSkeleton
           src={imagePath + "vehicle_image8-optimized.jpg"}
           alt="Bhagat Tour and Travels vehicle on a hill road"
           loading="lazy"
