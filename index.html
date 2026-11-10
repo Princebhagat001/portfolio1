@@ -18,6 +18,23 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#08212c" />
+  <style>
+    .page-skeleton { --sk: #e3ecea; min-height: 100vh; color: transparent; }
+    .page-skeleton i { display: block; border-radius: 8px; background: linear-gradient(90deg, var(--sk) 25%, #f0f5f4 50%, var(--sk) 75%); background-size: 200% 100%; animation: skeleton-shimmer 1.4s infinite; }
+    .sk-nav { height: 72px; border-bottom: 1px solid #cbdedc; padding: 20px max(calc((100vw - 1280px) / 2), 24px); }
+    .sk-nav i { width: 180px; height: 30px; }
+    .sk-section { max-width: 1280px; margin: auto; padding: 72px 24px; }
+    .sk-line { width: 55%; height: 24px; margin: 14px 0; }
+    .sk-title { width: min(680px, 85%); height: 56px; margin: 22px 0 36px; }
+    .sk-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .sk-card { height: 180px; border: 1px solid #cbdedc; border-radius: 18px; }
+    .sk-feature { min-height: 280px; }
+    .sk-faq { height: 54px; margin: 12px 0; border-bottom: 1px solid #cbdedc; }
+    .sk-short { width: 36%; }
+    @keyframes skeleton-shimmer { to { background-position: -200% 0; } }
+    @media (max-width: 700px) { .sk-section { padding: 48px 20px; } .sk-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .sk-card { height: 130px; } .sk-title { height: 42px; } }
+    @media (prefers-reduced-motion: reduce) { .page-skeleton i { animation: none; } }
+  </style>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -58,7 +75,20 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <div class="page-skeleton" role="status" aria-label="Loading page">
+      <div class="sk-nav"><i></i></div>
+      <main>
+        <section class="sk-section sk-feature"><i class="sk-line sk-short"></i><i class="sk-title"></i><i class="sk-line"></i><i class="sk-line sk-short"></i></section>
+        <section class="sk-section"><i class="sk-line sk-short"></i><i class="sk-title"></i><div class="sk-grid"><i class="sk-card"></i><i class="sk-card"></i><i class="sk-card"></i><i class="sk-card"></i></div></section>
+        <section class="sk-section"><i class="sk-line sk-short"></i><i class="sk-title"></i><div class="sk-grid"><i class="sk-card"></i><i class="sk-card"></i><i class="sk-card"></i><i class="sk-card"></i></div></section>
+        <section class="sk-section"><i class="sk-line sk-short"></i><i class="sk-title"></i><i class="sk-line"></i><i class="sk-line"></i><i class="sk-line sk-short"></i></section>
+        <section class="sk-section"><i class="sk-line sk-short"></i><i class="sk-title"></i><div class="sk-grid"><i class="sk-card"></i><i class="sk-card"></i><i class="sk-card"></i><i class="sk-card"></i></div></section>
+        <section class="sk-section"><i class="sk-line sk-short"></i><i class="sk-title"></i><i class="sk-faq"></i><i class="sk-faq"></i><i class="sk-faq"></i><i class="sk-faq"></i></section>
+        <section class="sk-section"><div class="sk-grid"><i class="sk-card"></i><i class="sk-card"></i><i class="sk-card"></i><i class="sk-card"></i></div></section>
+      </main>
+    </div>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

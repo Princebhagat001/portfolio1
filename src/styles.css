@@ -38,6 +38,60 @@ body {
   @apply max-w-2xl leading-8 opacity-75;
 }
 
+.faqs-layout {
+  @apply grid gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start;
+}
+
+.quote-card {
+  @apply lg:sticky lg:top-24;
+}
+
+.form-field {
+  @apply grid gap-1 text-sm font-medium;
+}
+
+.faq-item::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition: block-size 300ms ease, content-visibility 300ms allow-discrete;
+}
+
+.faq-item[open]::details-content {
+  block-size: auto;
+}
+
+@supports (interpolate-size: allow-keywords) {
+  .faq-item {
+    interpolate-size: allow-keywords;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item::details-content {
+    transition: none;
+  }
+}
+
+.quote-card .input {
+  height: 2.4rem;
+  min-height: 0;
+  padding-inline: 0.8rem;
+}
+
+.quote-card .textarea {
+  height: 3.6rem;
+  min-height: 0;
+  padding: 0.5rem 0.8rem;
+}
+
+.whatsapp-quote-button {
+  @apply mx-auto flex h-[3.2rem] w-3/4 rounded-full bg-[#19c965] p-1 text-xs font-semibold text-white no-underline;
+}
+
+.whatsapp-quote-button span {
+  @apply flex flex-1 items-center justify-center gap-1.5 rounded-full bg-[#43c75b];
+}
+
 .meta-label {
   @apply text-xs font-bold uppercase tracking-wider opacity-55;
 }
@@ -141,7 +195,65 @@ body {
 }
 
 .contact-panel {
-  @apply grid gap-10 bg-base-200 px-7 py-10 md:px-12 md:py-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center;
+  @apply grid gap-10 px-7 py-10 md:px-12 md:py-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center;
+}
+
+.contact-section {
+  position: relative;
+  clip-path: inset(0);
+  background: #fff;
+}
+
+.contact-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url("/images/vehicle_image2-optimized.jpg") center / cover no-repeat;
+}
+
+.contact-panel {
+  position: relative;
+  clip-path: inset(0);
+}
+
+.contact-panel::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  content: "";
+  background: rgb(224 237 255 / 62%);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.contact-panel > :not(.contact-background) {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .contact-background {
+    background-position: center 52%;
+  }
+
+  .contact-method-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-section {
+    clip-path: none;
+  }
+
+  .contact-background {
+    position: absolute;
+  }
 }
 
 .contact-tile {
