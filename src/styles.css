@@ -332,6 +332,17 @@ a:hover .whatsapp-label {
   @apply mt-3 block text-sm opacity-65 hover:opacity-100;
 }
 
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-contact-icon {
+  display: inline-flex;
+  flex: none;
+}
+
 @media (max-width: 1023px) {
   .hero-shell {
     background: hsl(var(--b1));

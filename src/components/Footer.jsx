@@ -8,13 +8,18 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:px-8">
         <div>
           <Brand />
-          <a className={`footer-link ${motion.link}`} href={"tel:" + phone}>
+          <a className={`footer-link footer-contact ${motion.link}`} href={"tel:" + phone}>
+            <span className="footer-contact-icon text-primary"><Icon name="phone" size={16} /></span>
             {phone} / 9807755037
           </a>
-          <a className={`footer-link ${motion.link}`} href={"mailto:" + email}>
+          <a className={`footer-link footer-contact ${motion.link}`} href={"mailto:" + email}>
+            <span className="footer-contact-icon text-primary"><Icon name="mail" size={16} /></span>
             {email}
           </a>
-          <span className={`footer-link ${motion.link}`}>Lahan-8, Siraha</span>
+          <span className={`footer-link footer-contact ${motion.link}`}>
+            <span className="footer-contact-icon text-primary"><Icon name="pin" size={16} /></span>
+            Lahan-8, Siraha
+          </span>
         </div>
         <div>
           <b className="text-sm">Navigate</b>

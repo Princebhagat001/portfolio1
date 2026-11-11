@@ -14,9 +14,9 @@ export default {
     themes: [
       {
         bhagat: {
-          primary: "#b86522",
+          primary: "#6f7138",
           secondary: "#17677c",
-          accent: "#dc9630",
+          accent: "#a3a45a",
           neutral: "#08212c",
           "base-100": "#f7faf9",
           "base-200": "#edf4f3",
