@@ -17,7 +17,7 @@ const dailyTerms = [
 
 export default function RentalPackages() {
   return (
-    <section className="section-wrap" aria-labelledby="rental-packages-title">
+    <section id="rental-packages" className="section-wrap" aria-labelledby="rental-packages-title">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8">
           <p className="eyebrow">Clear rates, simple terms</p>

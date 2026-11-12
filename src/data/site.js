@@ -5,7 +5,6 @@ export const email = "vagatjitendra@gmail.com";
 export const navigation = [
   ["Home", "home"],
   ["About", "about"],
-  ["Services", "services"],
   ["Fleet", "fleet"],
   ["Recommendations", "recommendations"],
   ["FAQs", "faqs"],

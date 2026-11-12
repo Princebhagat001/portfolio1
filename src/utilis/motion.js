@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -29,6 +29,33 @@ export const motion = {
   link: "transition-opacity duration-200 motion-reduce:transition-none",
   contact: "transition-colors duration-200 motion-reduce:transition-none",
 };
+
+export const imageLightbox = {
+  overlayClassName: "fixed inset-0 z-[100] flex items-center justify-center bg-white/90 backdrop-blur-[2px] p-4",
+};
+
+export function useImageLightbox() {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const closeImage = () => setSelectedImage(null);
+
+  useEffect(() => {
+    if (!selectedImage) return;
+    const closeOnEscape = (event) => event.key === "Escape" && setSelectedImage(null);
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [selectedImage]);
+
+  return {
+    selectedImage,
+    openImage: setSelectedImage,
+    closeImage,
+    overlayProps: {
+      onClick: closeImage,
+      onWheel: closeImage,
+      onTouchMove: closeImage,
+    },
+  };
+}
 
 export function setMotionPreferences() {
   document.documentElement.style.scrollBehavior = window.matchMedia(

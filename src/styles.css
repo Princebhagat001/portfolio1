@@ -14,6 +14,77 @@ body {
   @apply text-sm font-medium opacity-70 hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
 }
 
+.nav-menu-toggle {
+  border: 1px solid hsl(var(--bc) / 0.2);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.nav-menu-toggle:focus-visible,
+.nav-menu-panel a:focus-visible {
+  outline: 2px solid hsl(var(--p));
+  outline-offset: 3px;
+}
+
+.nav-menu-panel {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 1.25rem;
+  z-index: 1;
+  width: min(11rem, calc(100vw - 2.5rem));
+  padding: 0.6rem 0;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 1rem;
+  background: rgb(111 113 56 / 95%);
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 0.24);
+  color: white;
+  animation: nav-menu-in 160ms ease-out both;
+}
+
+.nav-menu-panel a {
+  display: block;
+  padding: 0.55rem 1rem;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 140ms ease, padding-left 140ms ease;
+}
+
+.nav-menu-panel a:hover {
+  padding-left: 1.2rem;
+  color: white;
+}
+
+.nav-menu-panel .nav-menu-contact {
+  margin-top: 0.3rem;
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  color: hsl(var(--p));
+}
+
+@keyframes nav-menu-in {
+  from { opacity: 0; transform: translateY(-0.35rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu-panel { animation: none; }
+  .nav-menu-panel a { transition: none; }
+}
+
+@media (min-width: 1024px) {
+  .nav-menu-panel { display: none; }
+}
+
 .eyebrow {
   @apply text-xs font-bold uppercase tracking-[.18em] text-primary;
 }
@@ -178,11 +249,14 @@ body {
   }
 
   .services-section .service-card {
-    @apply px-6 py-6;
+    width: 85%;
+    margin-inline: auto;
+    padding: 1.275rem;
   }
 
   .services-section .service-card h3 {
-    @apply text-xl;
+    font-size: 1.0625rem;
+    line-height: 1.4875rem;
   }
 
   .services-section .service-card p {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import WhyChooseUs from './components/WhyChooseUs.jsx'
 import Services from './components/Services'
 import BookingSteps from './components/BookingSteps'
 import RentalPackages from './components/RentalPackages'
@@ -86,6 +87,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <WhyChooseUs />
         <Services />
         <BookingSteps />
         <RentalPackages />

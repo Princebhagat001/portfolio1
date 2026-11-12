@@ -21,7 +21,7 @@ const steps = [
 
 export default function BookingSteps() {
   return (
-    <section className="section-wrap bg-base-200/50" aria-labelledby="booking-steps-title">
+    <section id="booking-steps" className="section-wrap bg-base-200/50" aria-labelledby="booking-steps-title">
       <div className="mx-auto max-w-6xl text-center">
         <h2 id="booking-steps-title" className="section-title">
           How to book a rental vehicle in Nepal?

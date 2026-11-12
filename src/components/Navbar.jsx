@@ -1,95 +1,68 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navigation, whatsAppUrl } from "../data/site";
 import Brand from "./Brand";
 import Icon from "./Icon";
 import { motion } from "../utilis/motion";
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navRef = useRef(null);
 
-  // Close mobile menu when clicking outside of the navbar or when scrolling significantly
   useEffect(() => {
-    let initialScrollY = window.scrollY;
+    if (!open) return;
 
-    function handleClickOutside(event) {
-      if (open && navRef.current && !navRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    }
+    const closeOnOutsideClick = (event) => {
+      if (!navRef.current?.contains(event.target)) setOpen(false);
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    const closeOnScroll = () => setOpen(false);
 
-    function handleScroll() {
-      if (open) {
-        // Only close if they scroll more than 15px from where they opened it
-        // This prevents the menu from instantly closing due to tiny layout shifts
-        if (Math.abs(window.scrollY - initialScrollY) > 15) {
-          setOpen(false);
-        }
-      }
-    }
-
-    if (open) {
-      initialScrollY = window.scrollY;
-      document.addEventListener("mousedown", handleClickOutside);
-      window.addEventListener("scroll", handleScroll, { passive: true });
-    }
-
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("scroll", closeOnScroll, { passive: true });
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("scroll", closeOnScroll);
     };
   }, [open]);
 
   return (
     <header ref={navRef} className="sticky top-0 z-50 border-b border-base-300/70 bg-base-100/95 text-base-content backdrop-blur">
-      <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8">
+      <nav className="relative mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Main navigation">
         <Brand />
         <div className="hidden items-center gap-7 lg:flex">
           {navigation.map(([label, id]) => (
-            <a key={id} className={`nav-link ${motion.link}`} href={"#" + id}>
+            <a key={id} className={`nav-link ${motion.link}`} href={`#${id}`}>
               {label}
             </a>
           ))}
-          <a
-            className={`btn btn-primary btn-sm rounded-full px-5 ${motion.button}`}
-            href={whatsAppUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a className={`btn btn-primary btn-sm rounded-full px-5 ${motion.button}`} href={whatsAppUrl} target="_blank" rel="noreferrer">
             Contact us <Icon name="arrow" size={16} />
           </a>
         </div>
-        <div className="flex items-center gap-1 lg:hidden">
-          <button
-            className="btn btn-ghost btn-circle btn-sm"
-            onClick={() => setOpen(!open)}
-            aria-label="Open navigation"
-          >
-            <Icon name={open ? "close" : "menu"} />
-          </button>
-        </div>
-      </nav>
-      {open && (
-        <div className="border-t border-base-300 bg-base-100 px-5 py-4 lg:hidden">
-          {navigation.map(([label, id]) => (
-            <a
-              key={id}
-              onClick={() => setOpen(false)}
-              className={`block border-b border-base-300 py-3 font-medium ${motion.link}`}
-              href={"#" + id}
-            >
-              {label}
+        <button
+          className="nav-menu-toggle lg:hidden"
+          type="button"
+          aria-expanded={open}
+          aria-controls="site-menu"
+          onClick={() => setOpen((value) => !value)}
+        >{open ? "CLOSE" : "MENU"}</button>
+        {open && (
+          <div className="nav-menu-panel lg:hidden" id="site-menu">
+            {navigation.map(([label, id]) => (
+              <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>
+                {label}
+              </a>
+            ))}
+            <a className="nav-menu-contact" href={whatsAppUrl} target="_blank" rel="noreferrer">
+              WhatsApp
             </a>
-          ))}
-          <a
-            className={`btn btn-primary mt-4 w-full rounded-full ${motion.button}`}
-            href={whatsAppUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contact us
-          </a>
-        </div>
-      )}
+          </div>
+        )}
+      </nav>
     </header>
   );
 }

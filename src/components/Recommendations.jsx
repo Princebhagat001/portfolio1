@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { fadeUp, motion, useReveal } from "../utilis/motion";
+import { fadeUp, imageLightbox, motion, useImageLightbox, useReveal } from "../utilis/motion";
 import ImageWithSkeleton from "./ImageWithSkeleton";
 
 const letters = [
@@ -16,7 +15,7 @@ const letters = [
 ];
 
 export default function Recommendations() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const { selectedImage, openImage, closeImage, overlayProps } = useImageLightbox();
   const headingRef = useReveal();
   const galleryRef = useReveal({ stagger: true });
   const modalRef = useReveal({ variant: fadeUp, enabled: Boolean(selectedImage) });
@@ -41,7 +40,7 @@ export default function Recommendations() {
           <div
             key={letter.id}
             data-motion-item
-            onClick={() => setSelectedImage(letter)}
+            onClick={() => openImage(letter)}
             className={`w-72 md:w-80 shrink-0 snap-start bg-base-100 p-4 shadow-lg rounded-2xl border border-base-300 ${motion.card} cursor-zoom-in`}
           >
             <ImageWithSkeleton
@@ -59,8 +58,8 @@ export default function Recommendations() {
       {selectedImage && (
         <div
           ref={modalRef}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 backdrop-blur-[2px] p-4"
-          onClick={() => setSelectedImage(null)}
+          className={imageLightbox.overlayClassName}
+          {...overlayProps}
         >
           <div
             className="relative max-h-[90vh] max-w-full md:max-w-[800px] w-auto bg-base-100 p-2 md:p-3 rounded-2xl shadow-2xl"
@@ -68,7 +67,7 @@ export default function Recommendations() {
           >
             <button
               className="btn btn-circle btn-sm btn-neutral absolute -right-3 -top-3 shadow-md border-2 border-base-100"
-              onClick={() => setSelectedImage(null)}
+              onClick={closeImage}
               aria-label="Close"
             >
               ✕
