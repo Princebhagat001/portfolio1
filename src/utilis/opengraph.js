@@ -1,5 +1,5 @@
 const siteUrl = "https://bhagattourandtravels.com.np/";
-const socialImage = `${siteUrl}images/vehicle_image1-optimized.jpg`;
+const socialImage = `${siteUrl}og-image.png`;
 
 export function applyOpenGraph(metadata) {
   Object.entries(metadata).forEach(([property, content]) => {
@@ -24,6 +24,6 @@ export function notFoundOpenGraph(pathname) {
     "og:title": "Page Not Found | Bhagat Tour and Travels",
     "og:description": "This page could not be found on the Bhagat Tour and Travels website.",
     "og:image": socialImage,
-    "og:image:alt": "Bhagat Tour and Travels vehicle on a road in Nepal",
+    "og:image:alt": "Bhagat Tour and Travels vehicle hire in Lahan, with the owner and contact details",
   };
 }

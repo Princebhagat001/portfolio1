@@ -22,8 +22,8 @@ const homeOpenGraph = {
   'og:url': 'https://bhagattourandtravels.com.np/',
   'og:title': homeTitle,
   'og:description': homeDescription,
-  'og:image': 'https://bhagattourandtravels.com.np/images/vehicle_image1-optimized.jpg',
-  'og:image:alt': 'Bhagat Tour and Travels vehicle on a road in Nepal',
+  'og:image': 'https://bhagattourandtravels.com.np/og-image.png',
+  'og:image:alt': 'Bhagat Tour and Travels vehicle hire in Lahan, with the owner and contact details',
 };
 
 export default function App() {

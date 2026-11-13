@@ -5,12 +5,12 @@ const letters = [
   {
     id: 1,
     src: "/Cert/save-the-children-recommendation-optimized.jpg",
-    alt: "Recommendation Letter from Save the Children",
+    alt: "Recommendation letter from Save the Children, Bardibas Field Office, dated 21 April 2026, confirming Bhagat Tour & Travels of Lahan provided satisfactory passenger vehicle services in 2021 and 2022",
   },
   {
     id: 2,
     src: "/Cert/world-vision-recommendation-optimized.jpg",
-    alt: "Recommendation Letter from World Vision",
+    alt: "World Vision International Nepal certificate of appreciation, dated 24 April 2026, praising Bhagat Tour and Travels of Lahan for travel services under a long-term agreement with WVI Nepal Bardibas since January 2021",
   },
 ];
 
